@@ -18,18 +18,20 @@
  * @package WordPress
  */
 
+ $db = parse_url($_ENV["JAWSDB_URL"]);
+
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'database_name_here' );
+define( 'DB_NAME', trim($db["path"], "/"));
 
 /** Database username */
-define( 'DB_USER', 'username_here' );
+define( 'DB_USER', $db['user'] );
 
 /** Database password */
-define( 'DB_PASSWORD', 'password_here' );
+define( 'DB_PASSWORD', $db['pass'] );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', $db['host'] );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
