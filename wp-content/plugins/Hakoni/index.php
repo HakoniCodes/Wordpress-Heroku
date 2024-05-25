@@ -36,40 +36,7 @@ function loadClasses()
 				require_once($file);
 			} else {
 				require_once($file);
-				$file = str_replace(__DIR__, '', $file);
-				$file = preg_replace('/\//', '\\', $file);
-				$file = str_replace('.php', '', $file);
-				$loaded_classes[] = $base . $file;
 			}
 		}
-	}
-
-	$order = [];
-
-	foreach($loaded_classes as $class) {
-		
-		if(class_exists($class)) {
-			$init = new $class();
-
-			if(property_exists($init, 'priority')) {
-				$order[] = [
-					'priority' => $init->priority,
-					'instance' => $init
-				];
-			} else {
-				$order[] = [
-					'priority' => 0,
-					'instance' => $init
-				];
-			}
-		} 
-	}
-
-	usort($order, function($a, $b) {
-		return $a['priority'] - $b['priority'];
-	});
-
-	foreach($order as $class) {
-		$class['instance']->init();
 	}
 }
