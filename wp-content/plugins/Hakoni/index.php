@@ -18,7 +18,6 @@ function loader_page()
 
 function loadClasses()
 {
-	$base = 'Hakoni';
 	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__));
 	$files = [];
 	
@@ -27,8 +26,6 @@ function loadClasses()
 			$files[] = $iter->getPathname();
 		}
 	}
-
-	$loaded_classes  = [];
 
 	foreach ($files as $file) {
 		if(file_exists($file)) {
