@@ -20,7 +20,6 @@ $settings = [
 		'label' => 'Authentication',
 		'slug' => 'hakoni_authentication_settings',
 		'section' => 'default',
-		'action' =>  __NAMESPACE__ . '\\registerAuthenticationSettingsPage',
 		'options' => [
 			[
 				'type' => 'text',
@@ -35,6 +34,8 @@ $settings = [
 add_action('admin_init', __NAMESPACE__ . '\\registerAllSettings');
 
 function registerAllSettings() {
+	global $settings;
+
 	foreach($settings as $setting) {
 		foreach($setting['options'] as $option) {
 			$args = [
@@ -62,6 +63,8 @@ function renderField($option) {
 }
 	
 function registerMenus() {
+	global $settings;
+
 	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', __NAMESPACE__ . '\\registerPage', 'dashicons-admin-tools', 1);
 
 	foreach($settings as $key => $setting) {
@@ -72,8 +75,6 @@ function registerMenus() {
 }
 
 function registerPage() {
-	wp_send_json($settings);
-	
 	?>
 		<h1>Hakoni Settings Page</h1>
 	<?php
