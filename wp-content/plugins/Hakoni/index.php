@@ -9,6 +9,8 @@ Description: Hakoni site wide settings plugin
 Author: Makanaokeakua Hakoni Edwards
 Version: 1.0.0
 */
+namespace Hakoni;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
