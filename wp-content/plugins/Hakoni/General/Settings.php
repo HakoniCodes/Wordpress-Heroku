@@ -65,7 +65,9 @@ function registerMenus() {
 	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', __NAMESPACE__ . '\\registerPage', 'dashicons-admin-tools', 1);
 
 	foreach($settings as $setting) {
-		add_submenu_page('hakoni_settings_page', $setting['label'], $setting['label'], 'manage_options', $setting['slug'], $setting['action'], 1, 0);
+		add_submenu_page('hakoni_settings_page', $setting['label'], $setting['label'], 'manage_options', $setting['slug'], function() use($setting) {
+			registerSettingsPage($setting);
+		}, 1, 0);
 	}
 }
 
@@ -75,16 +77,16 @@ function registerPage() {
 	<?php
 }
 
-function registerSettingsPage() {
+function registerSettingsPage($setting) {
 	?>		
 		<div class="wrap">
-			<h1>Authentication Settings</h1>
+			<h1><?php echo $setting['label'] ?></h1>
 
 			<form action="options.php" method="post">
-				<?php settings_fields('hakoni_authentication_settings'); ?>
+				<?php settings_fields($setting['slug']); ?>
 
 				<table class="form" role="presentation">
-					<?php do_settings_fields('hakoni_authentication_settings', 'default') ?>
+					<?php do_settings_fields($setting['slug'], $setting['section']) ?>
 				</table>
 
 				<?php submit_button(); ?>
