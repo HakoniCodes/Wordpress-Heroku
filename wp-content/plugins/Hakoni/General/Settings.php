@@ -72,6 +72,8 @@ function registerMenus() {
 }
 
 function registerPage() {
+	wp_send_json($settings);
+	
 	?>
 		<h1>Hakoni Settings Page</h1>
 	<?php
