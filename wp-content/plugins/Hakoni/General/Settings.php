@@ -64,10 +64,10 @@ function renderField($option) {
 function registerMenus() {
 	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', __NAMESPACE__ . '\\registerPage', 'dashicons-admin-tools', 1);
 
-	foreach($settings as $setting) {
+	foreach($settings as $key => $setting) {
 		add_submenu_page('hakoni_settings_page', $setting['label'], $setting['label'], 'manage_options', $setting['slug'], function() use($setting) {
 			registerSettingsPage($setting);
-		}, 1, 0);
+		}, 1, $key);
 	}
 }
 
