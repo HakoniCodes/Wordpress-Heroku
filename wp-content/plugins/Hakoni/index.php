@@ -18,5 +18,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'HAKONI_DIR', dirname( __FILE__ ) );
 
 require HAKONI_DIR . '/Classes/Abstracts/Base.php';
-require HAKONI_DIR . '/Classes/General/Settings.php';
-require HAKONI_DIR . '/Classes/Abstracts/Base.php';
+require HAKONI_DIR . '/General/Settings.php';
