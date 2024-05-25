@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_action('admin_menu', __NAMESPACE__ . '\\registerMenus');
 	
 function registerMenus() {
-	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', __NAMESPACE__ . 'registerPage', 'dashicons-admin-tools', 1);
-	add_submenu_page('hakoni_settings_page', 'Authentication', 'Authentication', 'manage_options', 'hakoni_settings_authentication_page', __NAMESPACE__ . 'registerAuthenticationPage', 1);
+	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', __NAMESPACE__ . '\\registerPage', 'dashicons-admin-tools', 1);
+	add_submenu_page('hakoni_settings_page', 'Authentication', 'Authentication', 'manage_options', 'hakoni_settings_authentication_page', __NAMESPACE__ . '\\registerAuthenticationPage', 1);
 }
 
 function registerPage() {
