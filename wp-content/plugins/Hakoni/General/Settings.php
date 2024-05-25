@@ -18,7 +18,7 @@ class Settings extends Base {
 	}
 
 	function registerMenus() {
-		add_menu_page('Settings', 'Settings', 'manage_options', 'hakoni_settings_page', [$this, 'registerPage'], '', 1);
+		add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', [$this, 'registerPage'], 'dashicons-admin-tools', 1);
 	}
 
 
