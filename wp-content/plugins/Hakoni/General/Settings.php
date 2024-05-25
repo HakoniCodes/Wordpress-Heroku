@@ -14,7 +14,7 @@ use Hakoni\Classes\Abstracts\Base;
 
 class Settings extends Base {
 	public function init() {
-		add_action('admin_init', [$this, 'registerMenus']);
+		add_action('admin_menu', [$this, 'registerMenus']);
 	}
 
 	function registerMenus() {
