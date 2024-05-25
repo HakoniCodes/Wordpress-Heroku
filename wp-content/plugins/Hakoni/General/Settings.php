@@ -20,7 +20,7 @@ $settings = [
 		'label' => 'Authentication',
 		'slug' => 'hakoni_authentication_settings',
 		'section' => 'default',
-		'action' => 'registerAuthenticationSettingsPage',
+		'action' =>  __NAMESPACE__ . '\\registerAuthenticationSettingsPage',
 		'options' => [
 			[
 				'type' => 'text',
