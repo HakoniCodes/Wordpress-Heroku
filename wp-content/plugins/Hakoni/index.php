@@ -9,26 +9,12 @@ Description: Hakoni site wide settings plugin
 Author: Makanaokeakua Hakoni Edwards
 Version: 1.0.0
 */
-add_action('init', 'loadClasses', 0);
-
-function loader_page()
-{
-	echo '<h1>Welcome to the Hakoni Site Setting Plugin!</h1>';
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-function loadClasses()
-{
-	$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__));
-	
-	foreach($iterator as $iter) {
-		if($iter->isFile()) {
-			$files[] = $iter->getPathname();
-		}
-	}
+define( 'HAKONI_DIR', dirname( __FILE__ ) );
 
-	foreach ($files as $file) {
-		if(file_exists($file) && $file->getExtension() === 'php') {
-			require_once $file->getPathname();
-		}
-	}
-}
+require HAKONI_DIR . '/Classes/Abstracts/Base.php';
+require HAKONI_DIR . '/Classes/General/Settings.php';
+require HAKONI_DIR . '/Classes/Abstracts/Base.php';
