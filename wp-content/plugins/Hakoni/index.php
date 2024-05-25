@@ -18,8 +18,7 @@ function loader_page()
 
 function loadClasses()
 {
-	$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__));
-	$files = [];
+	$files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__));
 	
 	foreach($iterator as $iter) {
 		if($iter->isFile()) {
@@ -28,12 +27,8 @@ function loadClasses()
 	}
 
 	foreach ($files as $file) {
-		if(file_exists($file)) {
-			if(strpos($file, 'Classes') != false) {
-				require_once($file);
-			} else {
-				require_once($file);
-			}
+		if(file_exists($file) && $file->getExtension() === 'php') {
+			require_once $file->getPathname();
 		}
 	}
 }
