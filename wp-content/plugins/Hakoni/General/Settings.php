@@ -32,7 +32,7 @@ $settings = [
 	]
 ];
 
-add_action('admin_init', __NAMESPACE__ . 'registerAllSettings');
+add_action('admin_init', __NAMESPACE__ . '\\registerAllSettings');
 
 function registerAllSettings() {
 	foreach($settings as $setting) {
