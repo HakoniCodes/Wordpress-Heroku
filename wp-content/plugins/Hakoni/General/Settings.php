@@ -55,9 +55,11 @@ function registerAllSettings() {
 function renderField($option) {
 	if(!isset($option['slug'])) return;
 
+	$value = get_option($option['slug']);
+
 	if($option['type'] == 'text') {
 		?>
-			<input type="text" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>"/>
+			<input type="text" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="<?php echo esc_attr($value) ?>" />
 		<?php
 	}
 }
