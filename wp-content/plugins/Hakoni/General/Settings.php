@@ -12,10 +12,9 @@ namespace Hakoni\General;
 
 add_action('admin_menu', [$this, 'registerMenus']);
 	
-
 function registerMenus() {
-	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', [$this, 'registerPage'], 'dashicons-admin-tools', 1);
-	add_submenu_page('hakoni_settings_page', 'Authentication', 'Authentication', 'manage_options', 'hakoni_settings_authentication_page', [$this, 'registerAuthenticationPage'], 1);
+	add_menu_page('Hakoni', 'Hakoni', 'manage_options', 'hakoni_settings_page', 'registerPage', 'dashicons-admin-tools', 1);
+	add_submenu_page('hakoni_settings_page', 'Authentication', 'Authentication', 'manage_options', 'hakoni_settings_authentication_page', 'registerAuthenticationPage', 1);
 }
 
 function registerPage() {
