@@ -89,7 +89,7 @@ function renderField($option) {
 		<?php
 	} else if($option['type'] == 'number') {
 		?>
-			<input type="number" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="<?php echo esc_attr($value) ?>" min="<?php echo esc_attr($option['min']) ?>" max="<?php echo esc_attr($option['max']) ?>"/>
+			<input type="number" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="<?php echo esc_attr($value ?? $option['min']) ?>" min="<?php echo esc_attr($option['min']) ?>" max="<?php echo esc_attr($option['max']) ?>"/>
 		<?php
 	} else if($option['type'] == 'checkbox') {
 		?>
