@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace Hakoni\General;
 
-use Hakoni\Classes\Base;
+use Hakoni\Classes\Abstracts\Base;
 
 class Settings extends Base {
 	public function init() {
