@@ -24,7 +24,7 @@ class Settings extends Base {
 
 	function registerPage() {
 		?>
-			<h1>Settings Page</h1>
+			<h1>Hakoni Settings Page</h1>
 		<?php
 	}
 }
