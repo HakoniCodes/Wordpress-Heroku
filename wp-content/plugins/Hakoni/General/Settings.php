@@ -22,10 +22,36 @@ $settings = [
 		'section' => 'default',
 		'options' => [
 			[
+				'type' => 'number',
+				'label' => 'Lifetime',
+				'slug' => 'session_lifetime',
+				'min' => 1000,
+				'max' => 60000,
+				'placeholder' => 'The life time of this session'
+			],
+			[
 				'type' => 'text',
-				'label' => 'Field 1',
-				'slug' => 'field_1',
-				'placeholder' => 'Field 1 Place Holder Text'
+				'label' => 'Domain',
+				'slug' => 'session_domain',
+				'placeholder' => 'The domain related to this session'
+			],
+			[
+				'type' => 'text',
+				'label' => 'Path',
+				'slug' => 'session_path',
+				'placeholder' => 'The path related to this session'
+			],
+			[
+				'type' => 'radio',
+				'label' => 'Secure',
+				'slug' => 'session_secure',
+				'placeholder' => 'The security of this session'
+			],
+			[
+				'type' => 'radio',
+				'label' => 'Http Only',
+				'slug' => 'session_http_only',
+				'placeholder' => 'The request type of this session'
 			]
 		]
 	]
@@ -60,6 +86,15 @@ function renderField($option) {
 	if($option['type'] == 'text') {
 		?>
 			<input type="text" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="<?php echo esc_attr($value) ?>" />
+		<?php
+	} else if($option['type'] == 'number') {
+		?>
+			<input type="number" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="<?php echo esc_attr($value) ?>" min="<?php echo esc_attr($option['min']) ?>" max="<?php echo esc_attr($option['max']) ?>"/>
+		<?php
+	} else if($option['type'] == 'radio') {
+		?>
+			<input type="hidden" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="0" />
+			<input type="radio" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="1" <?php echo ($value == 1 ? 'checked="checked"' : '') ?>/>
 		<?php
 	}
 }
@@ -99,6 +134,4 @@ function registerSettingsPage($setting) {
 		</div>
 	<?php
 }
-
-
 ?>
