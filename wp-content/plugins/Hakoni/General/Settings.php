@@ -42,13 +42,13 @@ $settings = [
 				'placeholder' => 'The path related to this session'
 			],
 			[
-				'type' => 'radio',
+				'type' => 'checkbox',
 				'label' => 'Secure',
 				'slug' => 'session_secure',
 				'placeholder' => 'The security of this session'
 			],
 			[
-				'type' => 'radio',
+				'type' => 'checkbox',
 				'label' => 'Http Only',
 				'slug' => 'session_http_only',
 				'placeholder' => 'The request type of this session'
@@ -91,10 +91,10 @@ function renderField($option) {
 		?>
 			<input type="number" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="<?php echo esc_attr($value) ?>" min="<?php echo esc_attr($option['min']) ?>" max="<?php echo esc_attr($option['max']) ?>"/>
 		<?php
-	} else if($option['type'] == 'radio') {
+	} else if($option['type'] == 'checkbox') {
 		?>
 			<input type="hidden" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="0" />
-			<input type="radio" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="1" <?php echo ($value == 1 ? 'checked="checked"' : '') ?>/>
+			<input type="checkbox" name="<?php echo $option['slug'] ?>" placeholder="<?php echo $option['placeholder'] ?>" value="1" <?php echo ($value == 1 ? 'checked="checked"' : '') ?>/>
 		<?php
 	}
 }
